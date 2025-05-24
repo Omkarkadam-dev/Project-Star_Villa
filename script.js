@@ -24,3 +24,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   features.forEach(feature => observer.observe(feature));
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll(".gallery-item img");
+
+  images.forEach(img => {
+    img.addEventListener("click", () => {
+      const src = img.getAttribute("src");
+      openLightbox(src);
+    });
+  });
+
+  function openLightbox(src) {
+    const lightbox = document.createElement("div");
+    lightbox.id = "lightbox";
+    lightbox.style.cssText = `
+      position:fixed;
+      top:0; left:0;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.8);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:1000;
+    `;
+    const img = document.createElement("img");
+    img.src = src;
+    img.style.maxWidth = "90%";
+    img.style.maxHeight = "80%";
+    img.style.borderRadius = "10px";
+
+    lightbox.appendChild(img);
+    document.body.appendChild(lightbox);
+
+    lightbox.addEventListener("click", () => {
+      lightbox.remove();
+    });
+  }
+});
