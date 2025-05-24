@@ -64,3 +64,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+
+document.getElementById('bookingForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const checkin = document.getElementById("checkin").value;
+  const checkout = document.getElementById("checkout").value;
+  const guests = document.getElementById("guests").value;
+
+  if (!name || !email || !phone || !checkin || !checkout || !guests) {
+    document.getElementById('bookingResponse').textContent = "Please fill all fields.";
+    document.getElementById('bookingResponse').style.color = 'red';
+    return;
+  }
+
+  document.getElementById('bookingResponse').textContent = "Booking request submitted! We will contact you soon.";
+  document.getElementById('bookingResponse').style.color = 'green';
+  document.getElementById('bookingForm').reset();
+});
