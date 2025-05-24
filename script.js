@@ -86,3 +86,12 @@ document.getElementById('bookingForm').addEventListener('submit', function (e) {
   document.getElementById('bookingResponse').style.color = 'green';
   document.getElementById('bookingForm').reset();
 });
+
+
+// Scroll to Top Button
+document.getElementById("scrollTopBtn").addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
